@@ -1,0 +1,46 @@
+.switch-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+}
+
+.switch-box {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 400px;
+}
+
+.switch-tabs {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #ccc;
+}
+
+.switch-tabs button {
+  flex: 1;
+  padding: 10px 20px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  cursor: pointer;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+  color: #555;
+  position: relative;
+}
+
+.switch-tabs button:hover {
+  color: #000080;
+}
+
+.switch-tabs button.active-tab {
+  font-weight: bold;
+  color: #000080;
+  border-bottom: 3px solid #000080;
+  transition: border-bottom 0.3s ease;
+}
