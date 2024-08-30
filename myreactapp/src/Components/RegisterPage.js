@@ -221,18 +221,23 @@ function RegisterPage() {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(submissionData),
+          }
         });
   
-        const result = await response.json();
+        const text = await response.text(); // Get raw response text
+        console.log("Raw Response Text:", text);
   
-        if (response.ok) {
-          alert("Registration successful!");
-          // Optionally, handle success (e.g., redirect to another page)
-        } else {
-          alert( (submissionData.username , submissionData.password));
-          alert("Failed to register: " + result.message || 'Registration failed');
+        try {
+          const result = JSON.parse(text); // Attempt to parse JSON
+  
+          if (response.ok) {
+            alert("Registration successful!");
+            // Optionally, handle success (e.g., redirect to another page)
+          } else {
+            alert("Failed to register: " + (result.message || 'Registration failed'));
+          }
+        } catch (jsonError) {
+          alert("Failed to parse JSON response: " + jsonError.message);
         }
       } catch (error) {
         alert(`Error: ${error.message}`);
@@ -243,6 +248,7 @@ function RegisterPage() {
       alert("Please fix the errors in the form.");
     }
   };
+  
 
   return (
     <div className="register-container">
